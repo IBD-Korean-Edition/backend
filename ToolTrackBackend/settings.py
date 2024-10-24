@@ -39,11 +39,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'ToolTrackApp.Borrow',
+    'ToolTrackApp.Faculty',
+    'ToolTrackApp.Building',
+    'ToolTrackApp.RoomToRent',
+    'ToolTrackApp.RoomWithItems',
+    'ToolTrackApp.Item',
     'ToolTrackApp.Student',
-    'ToolTrackApp.Room',
-    'ToolTrackApp.Add',
-    'ToolTrackApp.Remove',
+    'ToolTrackApp.Booking',
+    'ToolTrackApp.Admin',
     'ToolTrackApp',
     'corsheaders',  # Add corsheaders here
 ]

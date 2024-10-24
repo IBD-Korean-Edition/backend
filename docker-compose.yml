@@ -16,7 +16,26 @@ services:
 
   web:
     build: .
-    command: bash -c "python manage.py makemigrations Borrow && python manage.py makemigrations Room && python manage.py makemigrations Student && python manage.py makemigrations Add && python manage.py makemigrations Remove && python manage.py migrate && python manage.py populate_db && python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "
+      python manage.py migrate RoomWithItems zero &&
+      python manage.py migrate Student zero &&
+      python manage.py migrate Item zero &&
+      python manage.py migrate Admin zero &&
+      python manage.py migrate Building zero &&
+      python manage.py migrate Faculty zero &&
+      python manage.py migrate RoomToRent zero &&
+      python manage.py migrate Booking zero &&
+      python manage.py makemigrations RoomWithItems &&
+      python manage.py makemigrations Student &&
+      python manage.py makemigrations Item &&
+      python manage.py makemigrations Admin &&
+      python manage.py makemigrations Building &&
+      python manage.py makemigrations Faculty &&
+      python manage.py makemigrations RoomToRent &&
+      python manage.py makemigrations Booking &&
+      python manage.py migrate &&
+      python manage.py populate_db &&
+      python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app
     ports:
@@ -31,6 +50,7 @@ services:
       - DATABASE_PORT=5432
       - PYTHONDONTWRITEBYTECODE=1
       - PYTHONUNBUFFERED=1
+
 
   pgadmin:
     image: dpage/pgadmin4
